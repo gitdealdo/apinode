@@ -1,0 +1,43 @@
+body{
+	background-color: #ffffff;
+}
+.right-space{
+	margin-right: 1em;
+}
+.remove-float{
+	float: none;
+}
+.top-space{
+	margin-top: 1.5em;
+}
+.big-top-space{
+	margin-top: 150px;
+}
+form.link{
+	display: inline-block;
+}
+form.link input[type="submit"]{
+	background-color: transparent;
+	border: none;
+	color: rgb(200,50,50);
+}
+.main-img{
+	
+}
+.img-container{
+	width: 700px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+.image-container h1 .image-container h2{
+	padding: 15px;
+	border-bottom: 1px solid #222;
+}
+.image-container p{
+	text-align: right;
+	font-size: 1.2em;
+	margin-top: 1em;
+}
+img{
+	max-width: 100%;
+}

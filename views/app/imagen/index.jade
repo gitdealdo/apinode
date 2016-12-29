@@ -1,0 +1,17 @@
+extends ../../layout.jade
+block contenido
+	h2.text-center Mis Imagenes
+	table.table.table-striped.table-hover
+		thead
+			tr
+				th Title
+				th Opciones
+		tbody
+			for d in imagenes
+				tr
+					td= d.title
+					td
+						a(href="/api/imagenes/#{d._id}/edit") Editar
+						form(action="/api/imagenes/#{d._id}?_method=DELETE" class="link" method="POST")
+							input(type="submit", value="Eliminar")
+						a(href="/api/imagenes/#{d._id}") ver

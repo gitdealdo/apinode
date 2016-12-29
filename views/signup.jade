@@ -1,0 +1,27 @@
+extends ./layout.jade
+block contenido
+  .row
+  .col-md-6.center-block.remove-float
+    .panel.panel-default
+      .panel-heading
+        h2 Registrese por favor
+      .panel-body
+        form(action="/users", method="POST")
+          div(class="form-group")
+            label(for="email") Email
+            input(type="email" name="email" id="email" placeholder="Ingrese Email ó Correo" class="form-control")
+          div(class="form-group")
+            label(for="username") Usuario
+            input(type="text" name="username" placeholder="Ingrese Usuario" id="username" class="form-control")
+          div(class="form-group")
+            label(for="password") Contraseña
+            input(type="password" name="password" placeholder="Ingrese Contraseña" id="password" class="form-control")
+          div(class="form-group")
+            label(for="password") Confirme contraseña
+            input(type="password" name="password_confirmation" placeholder="Confirma contraseña" class="form-control")
+          .row
+            .col-xs-12.col-sm-6
+              input(type="submit", value="Enviar" class="btn btn-default")
+            .col-xs-12.col-sm-6.text-right
+              a(href="/login") Login
+

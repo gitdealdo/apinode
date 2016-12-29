@@ -1,0 +1,9 @@
+extends ../../layout.jade
+block contenido
+	.col-md-6.center-block.remove-float
+		h2.text-center Editar imagen
+		form(action="/api/imagenes/#{imagen._id}?_method=PUT" method="POST")
+			.form-group
+				label(for="title")
+				input(type="text" name="title" id="title" palceholder="Titulo de la imagen" class="form-control" value="#{imagen.title}")
+			input(type="submit" value="Guardar" class="btn btn-primary")

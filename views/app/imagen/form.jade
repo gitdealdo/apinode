@@ -1,0 +1,19 @@
+extends ../../layout.jade
+block contenido
+  .col-md-6.center-block.remove-float
+    .panel
+      .panel-heading
+        h2(class="text-center") Subir nueva imagen
+      .panel-body
+        form(action="/api/imagenes", method="POST" enctype="multipart/form-data")
+          .form-group
+            label(for="title") Titulo
+            input(type="text",name="title" class="form-control" placeholder="Ingrese Usuario", id="title")
+          .form-group
+            label(for="archivo") Imagen
+            input(type="file" name="archivo" class="form-control" id="archivo")
+          .row.top-space
+            .col-xs-12.col-sm-6
+              input(type="submit", value="Guardar" class="btn btn-default")
+            .col-xs-12.col-sm-6.text-right
+              a(href="#") link
