@@ -24,12 +24,12 @@ form.link input[type="submit"]{
 .main-img{
 	
 }
-.img-container{
+.image-container{
 	width: 700px;
 	max-width: 100%;
 	margin: 0 auto;
 }
-.image-container h1 .image-container h2{
+.image-container h1,.image-container h2{
 	padding: 15px;
 	border-bottom: 1px solid #222;
 }

@@ -10,6 +10,7 @@ router.get("/", function (req, res) {
     .populate("creator")
     .exec(function (err,imagenes) {
       if (err) console.error(err);
+      console.log(imagenes);
       res.render("app/home",{imagenes});
     })
 });
@@ -58,6 +59,7 @@ router.route("/imagenes")
     }
     var imagen = new Imagen(data);
     imagen.save(function (err) {
+      console.log(req.body.archivo);
       if (!err) {
         fs.copy(req.body.archivo.path,"public/imgs/"+imagen._id+"."+extension,function (err) {
           if (err) return console.error(err);
