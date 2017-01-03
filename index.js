@@ -1,25 +1,35 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var User = require("./models/User").User;
-// var session = require("express-session");
-var cookieSession = require("cookie-session");
+var session = require("express-session");
+// var cookieSession = require("cookie-session");
 var route = require("./routers");
 var session_middleware = require("./middlewares/session");
 var methodOverride = require("method-override");
 var formidable = require("express-formidable");
+var RedisStore = require("connect-redis")(session);
+var http = require("http");
+var realtime = require("./realtime");
 
 var app = express();
+var server = http.Server(app);
+var sessionMiddleware = session({
+    store:new RedisStore({}),
+    secret:"superultrasecretword"
+});
 
+realtime(server,sessionMiddleware)
 
 app.use("/public", express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 
-app.use(cookieSession({
-    name:"session",
-    keys:["llave-1","llave-3"]
-}));
+app.use(sessionMiddleware);
+// app.use(cookieSession({
+//     name:"session",
+//     keys:["llave-1","llave-3"]
+// }));
 
 app.use(formidable.parse({ keepExtentions:true }));
 
@@ -88,5 +98,5 @@ app.post("/sessions", function(req, res) {
 app.use("/api",session_middleware);
 app.use("/api", route);
 
-app.listen(3000);
+server.listen(3000);
 console.log("Server is running in http://localhost:3000");
